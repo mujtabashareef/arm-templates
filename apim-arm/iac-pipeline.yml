@@ -1,0 +1,53 @@
+trigger:
+  branches:
+    exclude:
+    - '*'
+
+pr:
+  branches:
+    exclude:
+    - '*'
+
+variables:
+  nonProdSubscription: 'Azure subscription 1'
+  workingDirectory: '$(System.DefaultWorkingDirectory)'
+
+stages:
+- stage: deployDev
+  jobs:
+  - deployment: DeployDevIac
+    displayName: Deploy Dev Iac
+    environment: 'dev'
+    strategy:
+      runOne:
+        deploy:
+          steps:
+          - checkout: self
+          - task: AzureCLI@2
+            env:
+              TenantId: $(tenant-id)
+            inputs:
+              azureSubscription: '$(nonProdSubscription)'
+              scriptType: 'pscore'
+              scriptLocation: 'scriptPath'
+              scriptPath: './dev.deploy.ps1'
+
+stages:
+- stage: deployTest
+  jobs:
+  - deployment: DeployTestIac
+    displayName: Deploy Test Iac
+    environment: 'test'
+    strategy:
+      runOne:
+        deploy:
+          steps:
+          - checkout: self
+          - task: AzureCLI@2
+            env:
+              TenantId: $(tenant-id)
+            inputs:
+              azureSubscription: '$(nonProdSubscription)'
+              scriptType: 'pscore'
+              scriptLocation: 'scriptPath'
+              scriptPath: './test.deploy.ps1'

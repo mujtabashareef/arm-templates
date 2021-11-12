@@ -32,7 +32,6 @@ stages:
               scriptLocation: 'scriptPath'
               scriptPath: './dev.deploy.ps1'
 
-stages:
 - stage: deployTest
   jobs:
   - deployment: DeployTestIac

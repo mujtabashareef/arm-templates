@@ -19,7 +19,7 @@ stages:
     displayName: Deploy Dev Iac
     environment: 'dev'
     strategy:
-      runOnes:
+      runOnce:
         deploy:
           steps:
           - checkout: self
@@ -38,7 +38,7 @@ stages:
     displayName: Deploy Test Iac
     environment: 'test'
     strategy:
-      runOnes:
+      runOnce:
         deploy:
           steps:
           - checkout: self

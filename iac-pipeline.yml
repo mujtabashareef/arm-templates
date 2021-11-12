@@ -9,7 +9,7 @@ pr:
     - '*'
 
 variables:
-  nonProdSubscription: 'Azure subscription 1'
+  nonProdSubscription: 'test-mujtaba'
   workingDirectory: '$(System.DefaultWorkingDirectory)'
 
 stages:

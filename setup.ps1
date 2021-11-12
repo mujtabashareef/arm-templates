@@ -12,6 +12,6 @@ az configure --defaults group=$rg location=$location
 Write-Host "Creating Storage Group"
 
 az storage account create `
-    -n $storageAccountName
-    --sku Standard_LRS
+    -n $storageAccountName `
+    --sku Standard_LRS `
     --kind StorageV2

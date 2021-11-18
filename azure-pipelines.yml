@@ -1,0 +1,23 @@
+# Starter pipeline
+- task: AzureResourceManagerTemplateDeployment@3
+  inputs:
+    deploymentScope: 'Resource Group'
+    azureResourceManagerConnection: 'test-mujtaba'
+    subscriptionId: '5453434d-4ee9-4b99-a577-ac9d39821d3c'
+    action: 'Create Or Update Resource Group'
+    resourceGroupName: 'test-resource-group-mujtaba'
+    location: 'East US 2'
+    templateLocation: 'URL of the file'
+    csmFileLink: 'https://github.com/Azure/azure-api-management-devops-resource-kit/blob/master/example/service.template.json'
+    csmParametersFileLink: 'https://github.com/mujtabashareef/azure-api-management-devops-resource-kit/blob/master/example/service.parameters.json'
+    deploymentMode: 'Incremental'
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger:
+- master
+
+pool:
+  vmImage: ubuntu-latest
+

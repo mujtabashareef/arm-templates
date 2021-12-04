@@ -1,0 +1,19 @@
+openapi: '3.0.2'
+info:
+  title: 'Yaseen Test Pipeline'
+  version: '1.0'
+servers:
+  - url: 'theydontexist.com'
+
+paths:
+  /something:
+    get:
+      operationId: getSomething
+      parameters:
+        - name: somethingId
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Success

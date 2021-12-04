@@ -1,0 +1,19 @@
+version: 0.0.1
+apimServiceName: mujtaba-test-apim
+apis:
+  - name: yaseenTestPipeline
+    type: http
+    displayName: Yaseen Test Pipeline
+    serviceUrl: https://thisaintexists.com
+    openApiSpec: api-contract.yml
+    openApiSpecFormat: OpenApi30_Yaml
+    suffix: test/dev
+    operations:
+      getSomething:
+        policy: getSomethingPolicy.xml
+    
+outputLocation: ARM_Templates
+serviceUrlParameters:
+  - apiName: yaseenTestPipeline
+    serviceUrl: https://thisaintexists.com
+  
